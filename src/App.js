@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Steps from "./steps";
 import Count from "./count";
+import Profile from "./Profile";
 export default function App() {
   let [task, setTask] = useState("count");
   return (
@@ -22,8 +23,19 @@ export default function App() {
         >
           count
         </button>
+
+        <button
+          className={`${task === "profile" && "active-btn"}`}
+          onClick={() => {
+            setTask((task = "profile"));
+          }}
+        >
+          count
+        </button>
       </div>
-      {task === "steps" ? <Steps /> : task === "count" && <Count />}
+      {task === "steps" && <Steps />}
+      {task === "count" && <Count />}
+      {task === "profile" && <Profile />}
     </div>
   );
 }
