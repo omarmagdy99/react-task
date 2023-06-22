@@ -3,7 +3,7 @@ import Steps from "./steps";
 import Count from "./count";
 import Profile from "./Profile";
 export default function App() {
-  let [task, setTask] = useState("count");
+  let [task, setTask] = useState("profile");
   return (
     <div className="App">
       <div className="buttons" style={{ width: "25%" }}>
@@ -30,7 +30,7 @@ export default function App() {
             setTask((task = "profile"));
           }}
         >
-          count
+          profile
         </button>
       </div>
       {task === "steps" && <Steps />}

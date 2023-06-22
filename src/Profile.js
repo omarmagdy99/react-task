@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./profile.css";
 const questions = [
     {
@@ -34,8 +35,20 @@ const questions = [
 ];
 export default function Profile() {
 
-    return <div><FlashCards /></div>
+    return <><FlashCards /></>
 }
 function FlashCards() {
-    return <div>TODO</div>;
+    let [questionId, SetQuestionId] = useState(null)
+    // answer function 
+    let AnswerSelect = (id) => {
+        id === questionId ? SetQuestionId(null) : SetQuestionId(id)
+    }
+    // answer function 
+    return <div className="flashcards">
+
+        {questions.map(question => {
+
+            return <div key={question.id} className={`${questionId === question.id && "selected"}`} onClick={() => AnswerSelect(question.id)}>{questionId != question.id ? question.question : question.answer}</div>
+        })}
+    </div>;
 }
