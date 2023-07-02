@@ -3,7 +3,7 @@ import Steps from "./steps";
 import Count from "./count";
 import Profile from "./Profile";
 export default function App() {
-  let [task, setTask] = useState("profile");
+  let [task, setTask] = useState("count");
   return (
     <div className="App">
       <div className="buttons" style={{ width: "25%" }}>

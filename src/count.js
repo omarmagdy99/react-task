@@ -6,18 +6,24 @@ export default function Count() {
   let date = new Date("june 21 2027");
   date.setDate(date.getDate() + dateChange);
   function changeFunction(changeState, realState) {
+    let changeDateInput = document.querySelector(".change-date-input");
+    let changeVarInput = document.querySelector(".change-var-input");
     realState === "var"
       ? changeState == "plus"
-        ? setVar(() => variance + 1)
-        : setVar(() => variance - 1)
+        ? (setVar(() => variance + 1), changeVarInput.value = variance)
+        : (setVar(() => variance - 1), changeVarInput.value = variance)
       : realState === "data" && changeState == "plus"
-      ? setDateChange(() => dateChange + variance)
-      : setDateChange(() => dateChange - variance);
+        ? (setDateChange(() => dateChange + variance), changeDateInput.value = dateChange)
+        : (setDateChange(() => dateChange - variance), changeDateInput.value = dateChange)
+
   }
+
+
   return (
     <div className="count">
       <p className="message">variance</p>
       <p className="message">{variance}</p>
+      <input type="range" className="change-var-input" defaultValue={variance} onChange={(e) => { setVar(Number(e.target.value)) }} />
       <div className="buttons">
         <button
           className="active-btn"
@@ -38,7 +44,7 @@ export default function Count() {
         </button>
       </div>
       <p className="message">change Date</p>
-      <p className="message">{dateChange}</p>
+      <input type="number" className="change-date-input" defaultValue={`${dateChange}`} onChange={(e) => { setDateChange(Number(e.target.value)) }} />
       <div className="buttons" style={{ margin: "10px 0" }}>
         <button
           className="active-btn"
