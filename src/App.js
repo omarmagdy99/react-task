@@ -2,8 +2,9 @@ import { useState } from "react";
 import Steps from "./steps";
 import Count from "./count";
 import Profile from "./Profile";
+import Tip from "./tip-calc"
 export default function App() {
-  let [task, setTask] = useState("count");
+  let [task, setTask] = useState("tip");
   return (
     <div className="App">
       <div className="buttons" style={{ width: "25%" }}>
@@ -32,10 +33,19 @@ export default function App() {
         >
           profile
         </button>
+        <button
+          className={`${task === "tip" && "active-btn"}`}
+          onClick={() => {
+            setTask((task = "tip"));
+          }}
+        >
+          tip
+        </button>
       </div>
       {task === "steps" && <Steps />}
       {task === "count" && <Count />}
       {task === "profile" && <Profile />}
+      {task === "tip" && <Tip />}
     </div>
   );
 }
