@@ -36,7 +36,7 @@ let Price = ({ bill, setBill }) => {
 
     return <>
         <p>How much was the bill?</p>
-        <input type="number" name="" value={bill} onChange={(e) => { e.target.value === "" ? setBill(0) : setBill(Number(e.target.value)) }} />
+        <input type="number" name="" value={bill} onChange={(e) => { setBill(Number(e.target.value)) }} />
     </>
 }
 // Price Component 
